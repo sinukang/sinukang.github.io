@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PT-Connect 상세 정보</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .project-detail {
+      padding: 20px;
+    }
+    .project-header {
+      margin-bottom: 20px;
+    }
+    .project-image {
+      margin-bottom: 20px;
+    }
+    .project-image img {
+      width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .project-info {
+      margin-bottom: 20px;
+    }
+    .project-content {
+      margin-bottom: 30px;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .tech-badge {
+      background-color: #3e64ff;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    .project-screenshots {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .screenshot {
+      width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="project-detail">
+    <div class="project-header">
+      <h2>PT-Connect</h2>
+      <p class="text-muted">PT 플랫폼 프로젝트 | 2023.12.19 ~ 2024.01.17</p>
+    </div>
+    
+    <div class="project-image">
+      <img src="../images/projects/ptconnect-main.jpg" alt="PT-Connect 메인 이미지">
+    </div>
+    
+    <div class="project-info">
+      <h4>프로젝트 개요</h4>
+      <p>PT-Connect는 PT 트레이너와 회원을 연결해주는 플랫폼 서비스입니다. 트레이너는 자신의 프로필과 스케줄을 등록하고, 회원은 원하는 트레이너를 검색하여 PT 서비스를 예약할 수 있습니다.</p>
+    </div>
+    
+    <div class="tech-stack">
+      <div class="tech-badge">Java</div>
+      <div class="tech-badge">Spring Framework</div>
+      <div class="tech-badge">MySQL</div>
+      <div class="tech-badge">JavaScript</div>
+      <div class="tech-badge">Bootstrap</div>
+      <div class="tech-badge">AWS</div>
+    </div>
+    
+    <div class="project-content">
+      <h4>주요 기능</h4>
+      <ul>
+        <li>회원 및 트레이너 회원가입/로그인</li>
+        <li>트레이너 프로필 및 스케줄 관리</li>
+        <li>PT 예약 시스템</li>
+        <li>결제 시스템 연동</li>
+        <li>리뷰 및 평점 시스템</li>
+        <li>관리자 대시보드</li>
+      </ul>
+      
+      <h4>담당 역할</h4>
+      <ul>
+        <li>팀장으로서 프로젝트 일정 관리</li>
+        <li>시스템 아키텍처 설계</li>
+        <li>회원 및 트레이너 정보관리 기능 구현</li>
+        <li>Spring Interceptor 활용 사이트 보안 개발</li>
+        <li>AWS 서버 배포 및 관리</li>
+      </ul>
+      
+      <h4>성과 및 배운 점</h4>
+      <p>PT-Connect 프로젝트를 통해 Spring Framework의 다양한 기능들을 활용하는 방법을 익혔습니다. 특히 Spring Security와 Interceptor를 활용한 보안 시스템 구현에 중점을 두었으며, RESTful API 설계 및 구현 역량을 강화했습니다. 또한 팀장으로서 일정 관리 및 팀원들과의 협업 능력을 기를 수 있었습니다.</p>
+    </div>
+    
+    <div class="project-screenshots">
+      <img class="screenshot" src="../images/projects/ptconnect-screen1.jpg" alt="회원 관리 화면">
+      <img class="screenshot" src="../images/projects/ptconnect-screen2.jpg" alt="트레이너 프로필">
+      <img class="screenshot" src="../images/projects/ptconnect-screen3.jpg" alt="예약 시스템">
+    </div>
+  </div>
+</body>
+</html> 

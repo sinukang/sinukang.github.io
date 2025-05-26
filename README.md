@@ -26,6 +26,72 @@
 >> - Front-end
 >> - Skill : javascript
 >>
+
+# 💫 프로젝트 모달 기능 사용법 💫
+
+포트폴리오 웹사이트에 프로젝트 모달 기능이 추가되었습니다. 아래는 해당 기능의 사용 방법입니다.
+
+## 모달 기능 구현 방법
+
+1. **프로젝트별 모달 HTML 파일 생성**
+   - 각 프로젝트의 상세 정보를 담은 HTML 파일을 `projects/` 폴더에 생성합니다.
+   - 파일명은 `[프로젝트ID].html` 형식으로 지정합니다. (예: `ptconnect.html`, `bbeam.html`)
+
+2. **프로젝트 미리보기 이미지 준비**
+   - 각 프로젝트의 미리보기 이미지를 `images/projects/` 폴더에 저장합니다.
+   - 파일명은 `[프로젝트ID]-preview.jpg` 형식으로 지정합니다.
+   - 본문에 사용할 이미지들도 같은 폴더에 저장합니다. (예: `[프로젝트ID]-main.jpg`, `[프로젝트ID]-screen1.jpg` 등)
+
+3. **index.html 프로젝트 링크 설정**
+   - 프로젝트 제목 부분을 `<a>` 태그로 감싸고 클래스와 속성을 추가합니다:
+   ```html
+   <h2><a href="#" class="project-link" data-project="프로젝트ID" data-summary="간단한 설명">프로젝트 제목</a></h2>
+   ```
+   - `data-project`: 프로젝트 ID (HTML 파일명과 동일)
+   - `data-summary`: 마우스 오버 시 표시될 간단한 설명
+
+4. **JavaScript 파일 연결**
+   - `index.html` 파일 하단에 `project-modal.js` 파일이 연결되어 있는지 확인합니다.
+
+## 모달 내용 작성 예시
+
+PT-Connect 프로젝트를 예시로 모달 HTML 파일을 작성했습니다. 다른 프로젝트도 이 구조를 참고하여 작성할 수 있습니다:
+
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>프로젝트 상세 정보</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* 프로젝트 모달 스타일 */
+  </style>
+</head>
+<body>
+  <div class="project-detail">
+    <div class="project-header">
+      <h2>프로젝트 제목</h2>
+      <p class="text-muted">프로젝트 기간</p>
+    </div>
+    
+    <div class="project-image">
+      <img src="../images/projects/프로젝트ID-main.jpg" alt="메인 이미지">
+    </div>
+    
+    <div class="project-info">
+      <h4>프로젝트 개요</h4>
+      <p>프로젝트 설명...</p>
+    </div>
+    
+    <!-- 기술 스택, 주요 기능, 담당 역할 등 내용 추가 -->
+  </div>
+</body>
+</html>
+```
+
 ## Deploy History 🌳
 
 2021-12-28
@@ -43,6 +109,12 @@
 
 - 포트폴리오 생성
 
-  <p align="center">
+2024-07-08
+
+- 프로젝트 모달 기능 추가
+  - 프로젝트 제목 클릭 시 모달로 상세 정보 표시
+  - 제목에 마우스 오버 시 미리보기 이미지와 간단한 설명 표시
+
+<p align="center">
 해당 포트폴리오는 <a href="https://congchu.github.io/web-porfolio/">베이스-포트폴리오</a>를 활용해 작성했습니다.
-  <br/>
+<br/>
