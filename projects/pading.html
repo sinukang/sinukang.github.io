@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pading - 페어 프로그래밍을 위한 웹 IDE 및 관리 시스템</title>
+  <link rel="stylesheet" href="/sinukang.github.io/css/style.css">
+  <style>
+    .project-detail {
+      padding: 20px;
+    }
+    .project-header {
+      margin-bottom: 20px;
+    }
+    .project-image {
+      margin-bottom: 20px;
+    }
+    .project-image img {
+      width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .project-info {
+      margin-bottom: 20px;
+    }
+    .project-content {
+      margin-bottom: 30px;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .tech-badge {
+      background-color: #3e64ff;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .screenshot {
+      width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .simple-carousel {
+      position: relative;
+      max-width: 100%;
+      margin: 20px auto;
+    }
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .carousel-slide {
+      display: none;
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .carousel-slide.active {
+      display: block;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .slide-caption {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    .slide-caption h5 {
+        color: white;
+    }
+    .slide-caption p {
+      margin: 0;
+      font-size: 14px;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .carousel-btn:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .prev-btn {
+      left: 15px;
+    }
+    .next-btn {
+      right: 15px;
+    }
+    .carousel-dots {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .dot {
+      height: 15px;
+      width: 15px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .dot.active, .dot:hover {
+      background-color: #3e64ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="project-detail">
+    <div class="project-image">
+      <img src="/sinukang.github.io/images/projects/pading/pading-main.png" alt="Pading 메인 이미지">
+    </div>
+    
+    <div class="project-header">
+      <h2>Pading</h2>
+      <p class="text-muted">페어 프로그래밍을 위한 웹 IDE 및 관리 시스템 | 2025.01.06 ~ 2025.02.21</p>
+    </div>
+    
+    <div class="project-info">
+      <h4>프로젝트 개요</h4>
+      <p>페어 프로그래밍을 할 때 공간적 제약, 생산성, 비효율적인 관리 시스템, 테스트 환경을 해결하기 위한 웹 IDE 공동편집 및 관리 시스템입니다. 웹 IDE를 통한 실시간 공동 코드 편집, 화상 통화, 채팅 등의 기능을 제공하여 효율적인 페어 프로그래밍 환경을 구축합니다.</p>
+    </div>
+    
+    <div class="tech-stack">
+      <div class="tech-badge">React</div>
+      <div class="tech-badge">TypeScript</div>
+      <div class="tech-badge">Tailwind CSS</div>
+      <div class="tech-badge">OpenVidu</div>
+      <div class="tech-badge">SockJS</div>
+      <div class="tech-badge">StompJS</div>
+    </div>
+    
+    <div class="project-content">
+      <h4>주요 기능</h4>
+      <ul>
+        <li>웹 IDE 동시편집 - 실시간으로 코드를 함께 작성하고 수정할 수 있는 기능</li>
+        <li>실시간 영상통화 및 채팅 - 원활한 의사소통을 위한 화상 및 텍스트 채팅 기능</li>
+        <li>프로젝트 관리
+          <ul>
+            <li>프로젝트 생성시 옵션설정(언어, 환경, 스펙 등등)</li>
+            <li>프로젝트 on/off</li>
+            <li>프로젝트 사용량 체크</li>
+          </ul>
+        </li>
+        <li>AI 코드 코칭 - ChatGPT API를 활용한 코드 개선 및 학습 지원</li>
+      </ul>
+      
+      <h4>기술 스택 선정 이유</h4>
+      <ul>
+        <li>리액트 : 웹 IDE를 하는 만큼 레퍼런스와 라이브러리가 많이 필요하기 때문에 선택</li>
+        <li>타입스크립트 : 팀이 FE담당이 많아 디버깅을 제대로 해야 할 필요가 있어서 타입스크립트로 선정</li>
+        <li>테일윈드 CSS : 빠른 CSS 적용으로 개발기간 단축</li>
+        <li>OpenVidu : 실시간 화상 채팅에 사용</li>
+        <li>SockJS, StompJS : 스프링 부트와 웹소켓 통신을 자주하기 때문에 사용</li>
+      </ul>
+      
+      <h4>담당 역할</h4>
+      <ul>
+        <li>프로젝트 관리(FE) - 프로젝트 생성, 옵션 설정, 상태 관리 기능 개발</li>
+        <li>채팅 기능 - SockJS와 StompJS를 활용한 실시간 채팅 기능 구현</li>
+        <li>AI 코드 코칭 - ChatGPT API를 활용한 코드 분석 및 개선 제안 기능 개발</li>
+      </ul>
+      
+      <h4>프로젝트 성과</h4>
+      <ul>
+        <li>ChatGPT API를 활용한 코드 코칭 기능 구현</li>
+        <li>Jira 협업툴을 통한 체계적인 프로젝트 관리 경험</li>
+        <li>리액트 및 타입스크립트 실무 활용 능력 향상</li>
+        <li>FE팀원이 많은 환경에서 Git을 활용한 형상관리 및 협업 방식 개선</li>
+      </ul>
+      
+      <h4>프로젝트 리뷰 및 회고</h4>
+      <p>리액트와 타입스크립트를 처음 접해본 프로젝트였습니다. 처음에는 핵심기능이나 복잡한 기능을 담당하는 것에 두려움이 있었지만, 지금 돌아보면 더 도전적인 기능을 맡았으면 더 많이 성장할 수 있었을 것이라는 아쉬움이 있습니다.</p>
+      <p>프로젝트 초반에는 협업 관련 트러블이 있었으나, 중반부터는 팀원들이 모두 협업 관리를 효율적으로 하게 되면서 이상적인 협업 형태를 경험할 수 있었습니다. 특히 이번 프로젝트에서는 AI를 활용한 코드 작성 및 레퍼런스 활용이 많아지면서 새로운 트러블이 발생했고, 이를 해결하기 위해 AI 사용에 대한 컨벤션을 추가하는 등 개발 과정에서 AI를 효율적으로 활용하는 방법을 배울 수 있었습니다.</p>
+    </div>
+    
+    <div class="project-screenshots">
+      <h4>프로젝트 스크린샷</h4>
+      <div class="simple-carousel" id="pading-carousel">
+        <div class="carousel-container">
+          <div class="carousel-slide active">
+            <img src="/sinukang.github.io/images/projects/pading/pading-screen1.png" alt="웹 IDE 화면">
+            <div class="slide-caption">
+              <h5>웹 IDE 화면</h5>
+              <p>실시간 코드 편집 및 공동 작업 환경</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="/sinukang.github.io/images/projects/pading/pading-screen2.png" alt="프로젝트 관리 화면">
+            <div class="slide-caption">
+              <h5>프로젝트 관리 화면</h5>
+              <p>프로젝트 생성, 설정 및 사용량 관리</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="/sinukang.github.io/images/projects/pading/pading-screen3.png" alt="전체 아키텍쳐">
+            <div class="slide-caption">
+              <h5>전체 아키텍쳐</h5>
+              <p>시스템 구조 및 기술 스택 구성</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-btn prev-btn" onclick="prevSlide('pading-carousel')">‹</button>
+        <button class="carousel-btn next-btn" onclick="nextSlide('pading-carousel')">›</button>
+        <div class="carousel-dots">
+          <span class="dot active" onclick="currentSlide(1, 'pading-carousel')"></span>
+          <span class="dot" onclick="currentSlide(2, 'pading-carousel')"></span>
+          <span class="dot" onclick="currentSlide(3, 'pading-carousel')"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // 페이지별 캐러셀 초기화
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Pading page loaded, initializing carousel...');
+      
+      // 약간의 지연을 두어 DOM이 완전히 로드된 후 실행
+      setTimeout(function() {
+        if (window.CarouselManager) {
+          window.CarouselManager.init('pading-carousel', 3);
+        } else {
+          console.error('CarouselManager not found. Make sure index.html carousel script is loaded.');
+        }
+      }, 100);
+    });
+  </script>
+</body>
+</html> 

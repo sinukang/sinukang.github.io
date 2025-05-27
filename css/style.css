@@ -9023,6 +9023,17 @@ h1, h2, h3, h4, h5,
         background: transparent;
         display: none; } }
 
+.project-preview {
+  max-width: 220px;
+  padding: 0 10px;
+  object-fit: cover;
+}
+
+.project-preview img{
+  max-width: 200px;
+  object-fit: cover;
+}
+
 .form-control {
   height: 52px !important;
   background: #fff !important;

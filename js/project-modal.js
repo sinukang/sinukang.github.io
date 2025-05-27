@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const projectId = $(this).data('project');
       return `
         <div class="project-preview">
-          <img src="images/projects/${projectId}-preview.jpg" alt="${projectId} 미리보기" style="max-width: 200px;">
+          <img src="./images/projects/${projectId}/${projectId}-main.png" alt="${projectId} 미리보기" style="max-width: 200px;">
           <p class="mt-2">${$(this).data('summary')}</p>
         </div>
       `;

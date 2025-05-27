@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jabix - 다중 음성디바이스를 이용한 AI음성비서 시스템</title>
+  <link rel="stylesheet" href="/sinukang.github.io/css/style.css">
+  <style>
+    .project-detail {
+      padding: 20px;
+    }
+    .project-header {
+      margin-bottom: 20px;
+    }
+    .project-image {
+      margin-bottom: 20px;
+    }
+    .project-image img {
+      width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .project-info {
+      margin-bottom: 20px;
+    }
+    .project-content {
+      margin-bottom: 30px;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .tech-badge {
+      background-color: #3e64ff;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .screenshot {
+      width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .simple-carousel {
+      position: relative;
+      max-width: 100%;
+      margin: 20px auto;
+    }
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .carousel-slide {
+      display: none;
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .carousel-slide.active {
+      display: block;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .slide-caption {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    .slide-caption h5 {
+        color: white;
+    }
+    .slide-caption p {
+      margin: 0;
+      font-size: 14px;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .carousel-btn:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .prev-btn {
+      left: 15px;
+    }
+    .next-btn {
+      right: 15px;
+    }
+    .carousel-dots {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .dot {
+      height: 15px;
+      width: 15px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .dot.active, .dot:hover {
+      background-color: #3e64ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="project-detail">
+    <div class="project-image">
+      <img src="/sinukang.github.io/images/projects/jabix/jabix-main.png" alt="Jabix 메인 이미지">
+    </div>
+    
+    <div class="project-header">
+      <h2>Jabix</h2>
+      <p class="text-muted">다중 음성디바이스를 이용한 AI음성비서 시스템 | 2025.02.24 ~ 2025.04.11</p>
+    </div>
+    
+    <div class="project-info">
+      <h4>프로젝트 개요</h4>
+      <p>다중 디바이스로 실내 어디서든 음성비서를 이용하고, 집안에서 발생하는 소음을 분석하여 위험상황을 감지하는 시스템입니다. Wake up keyword를 통한 음성인식, SED 기술을 활용한 생활 소음 분류, 중앙 AP를 통한 클라우드 통신, IoT 데이터 시각화 및 제어가 가능한 PWA 어플리케이션을 제공합니다.</p>
+    </div>
+    
+    <div class="tech-stack">
+      <div class="tech-badge">React</div>
+      <div class="tech-badge">Tailwind CSS</div>
+      <div class="tech-badge">SockJS</div>
+      <div class="tech-badge">StompJS</div>
+      <div class="tech-badge">PWA</div>
+    </div>
+    
+    <div class="project-content">
+      <h4>구현 사항</h4>
+      <ul>
+        <li>Wake up keyword를 통해 음성인식</li>
+        <li>SED 기술로 생활 소음으로부터 특성 소리인지 분류하는 기능</li>
+        <li>중앙 AP를 통해 해당 내용들을 종합하여 클라우드와 통신</li>
+        <li>클라우드에서 가지고있는 IoT 데이터를 시각화하고 제어할 수 있는 어플리케이션(PWA)</li>
+      </ul>
+      
+      <h4>기술 스택 선정 이유</h4>
+      <ul>
+        <li>리액트 : PWA로 빠르게 개발하기 위해서 프론트 라이브러리로 사용</li>
+        <li>테일윈드 CSS : 빠른 CSS 적용으로 개발기간 단축</li>
+        <li>SockJS, StompJS : 스프링 부트와 웹소켓 통신을 자주하기 때문에 사용</li>
+        <li>PWA : 실제 서비스보다 시각화가 우선이기 때문에 웹/앱 화면 둘다 필요해서 PWA로 구현</li>
+      </ul>
+      
+      <h4>담당 역할</h4>
+      <ul>
+        <li>PWA 어플리케이션 개발(FE) - IoT 데이터 시각화 및 제어 기능 구현</li>
+      </ul>
+      
+      <h4>프로젝트 성과</h4>
+      <ul>
+        <li>리액트의 레퍼런스들을 많이 사용해봤음</li>
+        <li>Cursor AI를 사용했는데, 모르는 레퍼런스부분에 대해 코드를 짜는데 큰 도움을 많이 받았음</li>
+        <li>백엔드와 IoT까지 통신에서 문제가 많이 발생했지만 끝내 해결할 수 있었음</li>
+      </ul>
+      
+      <h4>프로젝트 리뷰 및 회고</h4>
+      <p>하지만 프로젝트 막바지에 가서 내가 정한 로직내에서 짜지 않은 코드들에 코드가 더해지니 버그가 많이 발생했습니다. AI 코드를 짤 때 해당 영역을 정해야 한다는 것을 배웠습니다.</p>
+      <p>처음에 이걸 연구적인 성격의 프로젝트로 잡을지 서비스기반의 프로젝트로 잡을지 정하는 과정에서 시간을 많이 사용했습니다. 이 시간을 아낄 수 있었다면 더 좋은 성과를 낼 수 있었을 것 같습니다.</p>
+    </div>
+    
+    <div class="project-screenshots">
+      <h4>프로젝트 스크린샷</h4>
+      <div class="simple-carousel" id="jabix-carousel">
+        <div class="carousel-container">
+          <div class="carousel-slide active">
+            <img src="/sinukang.github.io/images/projects/jabix/jabix-screen1.gif" alt="PWA 어플리케이션 화면">
+            <div class="slide-caption">
+              <h5>음성 인식 시스템</h5>
+              <p>Wake up keyword 및 음성 명령 처리</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="/sinukang.github.io/images/projects/jabix/jabix-screen2.gif" alt="음성 인식 시스템">
+            <div class="slide-caption">
+              <h5>SED 기술 소음 분류</h5>
+              <p>생활 소음으로부터 특성 소리인지 분류</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-btn prev-btn" onclick="prevSlide('jabix-carousel')">‹</button>
+        <button class="carousel-btn next-btn" onclick="nextSlide('jabix-carousel')">›</button>
+        <div class="carousel-dots">
+          <span class="dot active" onclick="currentSlide(1, 'jabix-carousel')"></span>
+          <span class="dot" onclick="currentSlide(2, 'jabix-carousel')"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // 페이지별 캐러셀 초기화
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Jabix page loaded, initializing carousel...');
+      
+      // 약간의 지연을 두어 DOM이 완전히 로드된 후 실행
+      setTimeout(function() {
+        if (window.CarouselManager) {
+          window.CarouselManager.init('jabix-carousel', 3);
+        } else {
+          console.error('CarouselManager not found. Make sure index.html carousel script is loaded.');
+        }
+      }, 100);
+    });
+  </script>
+</body>
+</html> 

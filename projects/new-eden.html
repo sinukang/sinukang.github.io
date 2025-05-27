@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project New Eden - 자율 에이전트 3D 샌드박스 게임</title>
+  <link rel="stylesheet" href="/sinukang.github.io/css/style.css">
+  <style>
+    .project-detail {
+      padding: 20px;
+    }
+    .project-header {
+      margin-bottom: 20px;
+    }
+    .project-image {
+      margin-bottom: 20px;
+    }
+    .project-image img {
+      width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .project-info {
+      margin-bottom: 20px;
+    }
+    .project-content {
+      margin-bottom: 30px;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .tech-badge {
+      background-color: #3e64ff;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .screenshot {
+      width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .simple-carousel {
+      position: relative;
+      max-width: 100%;
+      margin: 20px auto;
+    }
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .carousel-slide {
+      display: none;
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .carousel-slide.active {
+      display: block;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .slide-caption {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    .slide-caption h5 {
+        color: white;
+    }
+    .slide-caption p {
+      margin: 0;
+      font-size: 14px;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .carousel-btn:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .prev-btn {
+      left: 15px;
+    }
+    .next-btn {
+      right: 15px;
+    }
+    .carousel-dots {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .dot {
+      height: 15px;
+      width: 15px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .dot.active, .dot:hover {
+      background-color: #3e64ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="project-detail">
+    <div class="project-image">
+      <img src="/sinukang.github.io/images/projects/new-eden/new-eden-main.png" alt="New Eden 메인 이미지">
+    </div>
+    
+    <div class="project-header">
+      <h2>New Eden</h2>
+      <p class="text-muted">자율 에이전트 3D 샌드박스 게임 | 2025.04.14 ~ 2025.05.30</p>
+    </div>
+    
+    <div class="project-info">
+      <h4>프로젝트 개요</h4>
+      <p>자율 에이전트를 관찰하고, 플레이어(신)로서 시뮬레이션에 개입할 수 있는 3D 샌드박스 게임입니다. 에이전트는 로컬 AI 모델을 기반으로 자신과 환경을 인식·판단하며, 장기·단기 기억을 축적하여 인간과 유사한 의사결정을 수행합니다.</p>
+    </div>
+    
+    <div class="tech-stack">
+      <div class="tech-badge">Unity3D (C#)</div>
+      <div class="tech-badge">Python + FastAPI</div>
+      <div class="tech-badge">Ollama</div>
+      <div class="tech-badge">Gemma 3 SLM</div>
+      <div class="tech-badge">JSON</div>
+    </div>
+    
+    <div class="project-content">
+      <h4>구현 사항</h4>
+      <ul>
+        <li><strong>로컬 AI 기반 에이전트 인지·상호작용</strong>
+          <ul>
+            <li>Gemma 3 SLM 모델을 Ollama 로컬 서버에서 구동</li>
+            <li>주변 에이전트 및 환경(다른 NPC, 오브젝트 등) 상태 인식</li>
+          </ul>
+        </li>
+        <li><strong>플레이어 개입 메커니즘</strong>
+          <ul>
+            <li>자연어 또는 프리셋 명령어로 특정 에이전트에 지시 전달</li>
+            <li>음식, 가구, 번개, 생물체 등 오브젝트 배치·제거를 통한 환경 조작</li>
+          </ul>
+        </li>
+        <li><strong>장기·단기 기억 저장</strong>
+          <ul>
+            <li>단기 기억: 하루 단위 관찰·행동·피드백 로그</li>
+            <li>장기 기억: 중요 사건·반복 경험 메타데이터 축적</li>
+            <li>JSON 파일로 저장·로딩하여 게임 구조에 반영</li>
+          </ul>
+        </li>
+      </ul>
+      
+      <h4>기술 스택 세부</h4>
+      <ul>
+        <li><strong>Unity 엔진(C# 스크립팅)</strong>: 에이전트 동작 로직, 환경 오브젝트 관리</li>
+        <li><strong>Ollama + Gemma 3 모델</strong>: 4비트 양자화, 로컬 추론 서버 구축</li>
+        <li><strong>Prompt 관리 모듈</strong>: 반응 일관성 보장을 위한 JSON 템플릿, 예외 상황 핸들러 포함</li>
+        <li><strong>메모리·환경 저장</strong>: JSON 기반 I/O 레이어, 버전 관리 및 장기·단기 분리</li>
+        <li><strong>통신</strong>: Unity ↔ Ollama RPC (HTTP/WebSocket)</li>
+      </ul>
+      
+      <h4>담당 역할</h4>
+      <ul>
+        <li>AI 팀장 - AI 모델 파이프라인 설계 및 로컬 서버 연동 관리</li>
+        <li>Reflection, Plan, Action, Feedback 데이터 플로우 아키텍처 수립</li>
+        <li>고급 프롬프트 엔지니어링 및 예외 핸들링 룰 구현</li>
+      </ul>
+      
+      <h4>프로젝트 성과</h4>
+      <ul>
+        <li><strong>완전 자율 시뮬레이션 월드 구현</strong>: 플레이어 개입 없이도 에이전트들이 자체 판단·행동</li>
+        <li><strong>제로 API 비용</strong>: 로컬 SLM 모델 연동으로 외부 의존성 제거</li>
+        <li><strong>고도화된 메모리 구조</strong>: 논문 기반 기억 계층 설계로 에이전트의 장기 학습 가능</li>
+        <li><strong>효율적 멀티 에이전트 아키텍처</strong>: 대규모 에이전트 동시 구동 시 성능 저하 최소화</li>
+      </ul>
+      
+      <h4>프로젝트 리뷰 및 회고</h4>
+      <p>프로젝트 중간까지 SLM을 사용하면서 정성평가같은 보고서를 작성하지 않았던 점이 아쉬웠습니다. 유사한 메모리를 불러올 때 부정적인 피드백의 메모리는 유사도를 따로 검사하게끔 하는 로직을 짰던 점이 기억에 남았습니다.</p>
+      <p>일이 몰려서(AI팀장, PM, AI 업무) 중간에 일이 진행이 되지 않았지만 팀장으로써 어떤식으로 팀원들에게 일을 분배해야 하는지, 팀원으로써도 어떻게 일을 해야 팀에 도움이 되는지 알 수 있었습니다.</p>
+    </div>
+    
+    <div class="project-screenshots">
+      <h4>프로젝트 스크린샷</h4>
+      <div class="simple-carousel" id="new-eden-carousel">
+        <div class="carousel-container">
+          <div class="carousel-slide active">
+            <img src="/sinukang.github.io/images/projects/new-eden/new-eden-screen1.png" alt="게임 메인 화면">
+            <div class="slide-caption">
+              <h5>게임 메인 화면</h5>
+              <p>3D 샌드박스 환경에서 자율 에이전트들의 활동</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="/sinukang.github.io/images/projects/new-eden/new-eden-screen2.gif" alt="AI 에이전트 상호작용">
+            <div class="slide-caption">
+              <h5>AI 에이전트 상호작용</h5>
+              <p>로컬 AI 모델 기반 에이전트 인지 및 의사결정</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="/sinukang.github.io/images/projects/new-eden/new-eden-screen3.png" alt="메모리 시스템 아키텍처">
+            <div class="slide-caption">
+              <h5>메모리 시스템 아키텍처</h5>
+              <p>장기·단기 기억 저장 및 관리 시스템</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-btn prev-btn" onclick="prevSlide('new-eden-carousel')">‹</button>
+        <button class="carousel-btn next-btn" onclick="nextSlide('new-eden-carousel')">›</button>
+        <div class="carousel-dots">
+          <span class="dot active" onclick="currentSlide(1, 'new-eden-carousel')"></span>
+          <span class="dot" onclick="currentSlide(2, 'new-eden-carousel')"></span>
+          <span class="dot" onclick="currentSlide(3, 'new-eden-carousel')"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // 페이지별 캐러셀 초기화
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('New Eden page loaded, initializing carousel...');
+      
+      // 약간의 지연을 두어 DOM이 완전히 로드된 후 실행
+      setTimeout(function() {
+        if (window.CarouselManager) {
+          window.CarouselManager.init('new-eden-carousel', 3);
+        } else {
+          console.error('CarouselManager not found. Make sure index.html carousel script is loaded.');
+        }
+      }, 100);
+    });
+  </script>
+</body>
+</html> 
