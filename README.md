@@ -8,6 +8,94 @@
 > Java와 SpringFramework를 배우며 웹 개발자로서 기반을 다지고, 4번의 팀 프로젝트를 진행하며 역량을 길렀습니다.<br>
 > 저에 대한 더 자세한 내용은 <a href='https://sinukang.github.io'><img src= "https://img.shields.io/badge/Portfolio-8A2BE2" style="height:17px"></a> 이곳을 통해 확인 하실 수 있습니다.
 
+# 🛠️ Skills 섹션 관리 가이드 🛠️
+
+포트폴리오의 Skills 섹션은 JavaScript 배열로 관리되어 쉽게 스킬을 추가, 수정, 삭제할 수 있습니다.
+
+## Skills 추가/수정 방법
+
+1. **index.html 파일에서 스킬 데이터 배열 찾기**
+   - 파일 하단의 `<script>` 태그 내에서 `skillsData` 배열을 찾습니다.
+
+2. **새로운 스킬 추가**
+   ```javascript
+   const skillsData = [
+     // 기존 스킬들...
+     { name: "새로운스킬", proficiency: 숙련도%, category: "카테고리", icon: "FontAwesome아이콘클래스" }
+   ];
+   ```
+
+3. **스킬 객체 속성 설명**
+   - `name`: 스킬 이름 (문자열)
+   - `proficiency`: 숙련도 퍼센티지 (숫자, 0-100)
+   - `category`: 카테고리 ("language", "frontend", "backend" 중 하나)
+   - `icon`: FontAwesome 아이콘 클래스 (예: "fab fa-react", "fas fa-database")
+
+## 숙련도별 자동 분류
+
+스킬들은 숙련도에 따라 자동으로 3개 섹션에 분류됩니다:
+
+- **업무에 활용할 수 있음**: 70% 이상
+- **기본 기능을 사용할 수 있음**: 50% ~ 69%
+- **보고 이해할 수 있음**: 49% 이하
+
+## 카테고리별 색상
+
+각 카테고리는 고유한 색상을 가집니다:
+
+- **language** (언어): 파란색 계열 (`#667eea` → `#764ba2`)
+- **frontend** (프론트엔드): 분홍색 계열 (`#f093fb` → `#f5576c`)
+- **backend** (백엔드): 하늘색 계열 (`#4facfe` → `#00f2fe`)
+
+## 아이콘 사용 가이드
+
+FontAwesome 6.0 아이콘을 사용합니다. 주요 아이콘 예시:
+
+### 언어 (Language)
+- Java: `"fab fa-java"`
+- Python: `"fab fa-python"`
+- JavaScript: `"fab fa-js-square"`
+- C++: `"fas fa-code"`
+
+### 프론트엔드 (Frontend)
+- HTML: `"fab fa-html5"`
+- CSS: `"fab fa-css3-alt"`
+- React: `"fab fa-react"`
+- Vue.js: `"fab fa-vuejs"`
+- Angular: `"fab fa-angular"`
+
+### 백엔드 (Backend)
+- Spring: `"fas fa-leaf"`
+- Django: `"fas fa-server"`
+- Node.js: `"fab fa-node-js"`
+- AWS: `"fab fa-aws"`
+- MySQL: `"fas fa-database"`
+- Docker: `"fab fa-docker"`
+
+## 스킬 추가 예시
+
+```javascript
+// 새로운 프론트엔드 스킬 추가
+{ name: "Angular", proficiency: 55, category: "frontend", icon: "fab fa-angular" },
+
+// 새로운 백엔드 스킬 추가
+{ name: "Node.js", proficiency: 65, category: "backend", icon: "fab fa-node-js" },
+
+// 새로운 언어 추가
+{ name: "TypeScript", proficiency: 75, category: "language", icon: "fab fa-js-square" }
+```
+
+## 필터링 기능
+
+- **전체**: 모든 스킬 표시
+- **언어**: language 카테고리만 표시
+- **프론트엔드**: frontend 카테고리만 표시
+- **백엔드**: backend 카테고리만 표시
+
+데스크톱에서는 필터링 시에도 3개 섹션 영역이 유지되고, 모바일에서는 빈 섹션이 숨겨집니다.
+
+
+
 # 💫 프로젝트 모달 기능 사용법 💫
 
 포트폴리오 웹사이트에 프로젝트 모달 기능이 추가되었습니다. 아래는 해당 기능의 사용 방법입니다.

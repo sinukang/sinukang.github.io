@@ -22,6 +22,10 @@
 	<link rel="stylesheet" href="css/flaticon.css">
 	<link rel="stylesheet" href="css/icomoon.css">
 	<link rel="stylesheet" href="css/style.css">
+	
+	<!-- FontAwesome for skill icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 	<style>
 		/* 언어 스택 색상 (파란색 계열) */
 		.language-color {
@@ -36,6 +40,232 @@
 		/* 백엔드 스택 색상 (주황색 계열) */
 		.backend-color {
 			background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important;
+		}
+
+		/* 스킬 필터 버튼 스타일 */
+		.skill-filters {
+			margin-bottom: 2rem;
+		}
+
+		.filter-btn {
+			margin: 0 0.5rem 0.5rem 0;
+			border-radius: 25px;
+			padding: 0.5rem 1.5rem;
+			transition: all 0.3s ease;
+		}
+
+		.filter-btn.active {
+			background-color: #007bff;
+			color: white;
+			border-color: #007bff;
+		}
+
+		/* 스킬 레벨 섹션 */
+		.skill-level-section {
+			flex: 1;
+			margin-bottom: 0;
+		}
+
+		.skill-level-title {
+			text-align: center;
+			margin-bottom: 1rem;
+		}
+
+		.skill-level-title .badge {
+			font-size: 0.9rem;
+			padding: 0.5rem 1rem;
+			border-radius: 20px;
+			font-weight: 600;
+		}
+
+		/* 배지 색상 커스터마이징 */
+		.badge-advanced {
+			background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+			color: white;
+			box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+		}
+
+		.badge-intermediate {
+			background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+			color: #212529;
+			box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);
+		}
+
+		.badge-basic {
+			background: #e9ecef;
+			color: #495057;
+			border: 1px solid #ced4da;
+			box-shadow: 0 2px 8px rgba(73, 80, 87, 0.15);
+		}
+
+		/* 스킬 컨테이너 - 세로 레이아웃 */
+		.skills-container {
+			display: flex;
+			flex-direction: column;
+			gap: 0.75rem;
+			background: white;
+			border-radius: 15px;
+			padding: 1.5rem;
+			box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+		}
+
+		/* 스킬 아이템 - 가로 배치 (세로 컨테이너 내에서) */
+		.skill-item {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			padding: 0.75rem;
+			border-radius: 10px;
+			transition: all 0.3s ease;
+			border: 1px solid #f0f0f0;
+		}
+
+		.skill-item:hover {
+			background-color: #f8f9fa;
+			transform: translateX(5px);
+			box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+		}
+
+		/* 스킬 아이콘 */
+		.skill-icon {
+			font-size: 1.5rem;
+			margin-right: 1rem;
+			width: 30px;
+			text-align: center;
+		}
+
+		.language-skill .skill-icon {
+			color: #667eea;
+		}
+
+		.frontend-skill .skill-icon {
+			color: #f093fb;
+		}
+
+		.backend-skill .skill-icon {
+			color: #4facfe;
+		}
+
+		/* 스킬 정보 */
+		.skill-info {
+			flex: 1;
+			text-align: left;
+		}
+
+		.skill-name {
+			font-weight: 600;
+			margin-bottom: 0.25rem;
+			color: #333;
+			font-size: 0.95rem;
+		}
+
+		/* 진행률 바 컨테이너 */
+		.skill-progress {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			gap: 0.5rem;
+			width: 100%;
+		}
+
+		.progress-bar-container {
+			flex: 1;
+			height: 6px;
+			background-color: #e9ecef;
+			border-radius: 3px;
+			overflow: hidden;
+		}
+
+		.progress-bar-fill {
+			height: 100%;
+			border-radius: 3px;
+			transition: width 0.8s ease-in-out;
+		}
+
+		/* 카테고리별 진행률 바 색상 */
+		.language-skill .progress-bar-fill {
+			background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+		}
+
+		.frontend-skill .progress-bar-fill {
+			background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
+		}
+
+		.backend-skill .progress-bar-fill {
+			background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+		}
+
+		/* 퍼센티지 텍스트 */
+		.skill-percentage {
+			font-size: 0.8rem;
+			font-weight: 600;
+			color: #666;
+			min-width: 35px;
+			text-align: right;
+		}
+
+		/* 필터링 애니메이션 */
+		.skill-item.hidden {
+			display: none !important;
+		}
+
+		.skill-level-section.hidden {
+			display: none !important;
+		}
+
+		/* 반응형 디자인 */
+		@media (max-width: 992px) {
+			.skills-sections-container {
+				flex-direction: column;
+				gap: 2rem;
+			}
+
+			.skill-level-section {
+				margin-bottom: 0;
+			}
+		}
+
+		@media (max-width: 768px) {
+			.skills-sections-container {
+				flex-direction: column;
+				gap: 1.5rem;
+			}
+
+			.skills-container {
+				padding: 1rem;
+			}
+			
+			.skill-item {
+				padding: 0.5rem;
+			}
+
+			.skill-icon {
+				font-size: 1.25rem;
+				margin-right: 0.75rem;
+				width: 25px;
+			}
+
+			.skill-name {
+				font-size: 0.9rem;
+			}
+
+			.skill-percentage {
+				font-size: 0.75rem;
+				min-width: 30px;
+			}
+			
+			.filter-btn {
+				margin: 0.25rem;
+				padding: 0.4rem 1rem;
+				font-size: 0.9rem;
+			}
+		}
+
+		/* 3개 섹션 flex 컨테이너 */
+		.skills-sections-container {
+			display: flex;
+			gap: 1.5rem;
+			align-items: flex-start;
 		}
 	</style>
 </head>
@@ -56,6 +286,7 @@
 					<li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
 					<li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
 					<li class="nav-item"><a href="#education-section" class="nav-link"><span>Education</span></a></li>
+					<li class="nav-item"><a href="#awards-section" class="nav-link"><span>Awards</span></a></li>
 					<li class="nav-item"><a href="#experience-section" class="nav-link"><span>Experience</span></a></li>
 					<li class="nav-item"><a href="#skills-section" class="nav-link"><span>Skills</span></a></li>
 					<li class="nav-item"><a href="#projects-section" class="nav-link"><span>Projects</span></a></li>
@@ -182,9 +413,10 @@
 					<nav id="navi">
 						<ul>
 							<li><a href="#page-1">Education</a></li>
-							<li><a href="#page-2">Experience</a></li>
-							<li><a href="#page-3">Skills</a></li>
-							<li><a href="#page-4">Projects</a></li>
+							<li><a href="#page-2">Awards</a></li>
+							<li><a href="#page-3">Experience</a></li>
+							<li><a href="#page-4">Skills</a></li>
+							<li><a href="#page-5">Projects</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -253,6 +485,43 @@
 					</div>
 
 					<div id="page-2" class="page two">
+						<h2 id="awards-section" class="heading">Awards / Certificates</h2>
+						<div class="resume-wrap d-flex ftco-animate">
+							<div class="icon d-flex align-items-center justify-content-center">
+								<span class="flaticon-ideas"></span>
+							</div>
+							<div class="text pl-3">
+								<span class="date">2025 05</span>
+								<h2>삼성 청년 SW 아카데미 우수 프로젝트 수상 3회</h2>
+								<span class="position">SSAFY 삼성 청년 소프트웨어 AI 아카데미</span>
+								<p>프로젝트 진행 과정에서 팀워크와 기술력을 인정받아 3회에 걸쳐 우수 프로젝트로 선정되었습니다.</p>
+							</div>
+						</div>
+						<div class="resume-wrap d-flex ftco-animate">
+							<div class="icon d-flex align-items-center justify-content-center">
+								<span class="flaticon-ideas"></span>
+							</div>
+							<div class="text pl-3">
+								<span class="date">2024 12</span>
+								<h2>삼성 청년 SW 아카데미 우수 교육생 선정</h2>
+								<span class="position">SSAFY 삼성 청년 소프트웨어 AI 아카데미</span>
+								<p>학습 태도와 성과를 인정받아 우수 교육생으로 선정되었습니다.</p>
+							</div>
+						</div>
+						<div class="resume-wrap d-flex ftco-animate">
+							<div class="icon d-flex align-items-center justify-content-center">
+								<span class="flaticon-ideas"></span>
+							</div>
+							<div class="text pl-3">
+								<span class="date">2024 09</span>
+								<h2>SQLD 자격증</h2>
+								<span class="position">한국데이터산업진흥원</span>
+								<p>SQL 개발자 자격증을 취득하여 데이터베이스 관련 전문 지식을 입증하였습니다.</p>
+							</div>
+						</div>
+					</div>
+
+					<div id="page-3" class="page three">
 						<h2 id="experience-section" class="heading">Work Experience</h2>
 						<!-- <div class="resume-wrap d-flex ftco-animate">
 							<div class="icon d-flex align-items-center justify-content-center">
@@ -363,265 +632,52 @@
 							</div>
 						</div> -->
 					</div>
-					<div id="page-3" class="page three">
+
+					<div id="page-4" class="page four">
 						<h2 id="skills-section" class="heading">Skills</h2>
-						<div class="row progress-circle mb-5">
-							<div class="col-lg-4 mb-4">
-								<div class="bg-white rounded-lg shadow p-4">
-									<h2 class="h5 font-weight-bold text-center mb-4">JAVA</h2>
-
-									<!-- Progress bar 1 -->
-									<div class="progress mx-auto" data-value='70'>
-										<span class="progress-left">
-											<span class="progress-bar border-primary"></span>
-										</span>
-										<span class="progress-right">
-											<span class="progress-bar border-primary"></span>
-										</span>
-										<div
-											class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-											<div class="h2 font-weight-bold">70<sup class="small">%</sup></div>
-										</div>
-									</div>
-									<!-- END -->
-
-									<!-- Demo info -->
-									<!-- <div class="row text-center mt-4">
-										<div class="col-6 border-right">
-											<div class="h4 font-weight-bold mb-0">28%</div><span
-												class="small text-gray">Last week</span>
-										</div>
-										<div class="col-6">
-											<div class="h4 font-weight-bold mb-0">60%</div><span
-												class="small text-gray">Last month</span>
-										</div>
-									</div> -->
-									<!-- END -->
-								</div>
-							</div>
-
-							<div class="col-lg-4 mb-4">
-								<div class="bg-white rounded-lg shadow p-4">
-									<h2 class="h5 font-weight-bold text-center mb-4">Python</h2>
-
-									<!-- Progress bar 1 -->
-									<div class="progress mx-auto" data-value='70'>
-										<span class="progress-left">
-											<span class="progress-bar border-primary"></span>
-										</span>
-										<span class="progress-right">
-											<span class="progress-bar border-primary"></span>
-										</span>
-										<div
-											class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-											<div class="h2 font-weight-bold">70<sup class="small">%</sup></div>
-										</div>
-									</div>
-									<!-- END -->
-
-									<!-- Demo info -->
-									<!-- <div class="row text-center mt-4">
-										<div class="col-6 border-right">
-											<div class="h4 font-weight-bold mb-0">28%</div><span
-												class="small text-gray">Last week</span>
-										</div>
-										<div class="col-6">
-											<div class="h4 font-weight-bold mb-0">60%</div><span
-												class="small text-gray">Last month</span>
-										</div>
-									</div> -->
-									<!-- END -->
-								</div>
-							</div>
-							<div class="col-lg-4 mb-4">
-								<div class="bg-white rounded-lg shadow p-4">
-									<h2 class="h5 font-weight-bold text-center mb-4">React</h2>
-	
-									<!-- Progress bar 1 -->
-									<div class="progress mx-auto" data-value='60'>
-										<span class="progress-left">
-											<span class="progress-bar border-primary"></span>
-										</span>
-										<span class="progress-right">
-											<span class="progress-bar border-primary"></span>
-										</span>
-										<div
-											class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-											<div class="h2 font-weight-bold">60<sup class="small">%</sup></div>
-										</div>
-									</div>
-									<!-- END -->
-	
-									<!-- Demo info -->
-									<!-- <div class="row text-center mt-4">
-										<div class="col-6 border-right">
-											<div class="h4 font-weight-bold mb-0">28%</div><span
-												class="small text-gray">Last week</span>
-										</div>
-										<div class="col-6">
-											<div class="h4 font-weight-bold mb-0">60%</div><span
-												class="small text-gray">Last month</span>
-										</div>
-									</div> -->
-									<!-- END -->
-								</div>
-							</div>
+						
+						<!-- 필터 버튼들 -->
+						<div class="skill-filters mb-4 text-center">
+							<button class="btn btn-outline-primary filter-btn active" data-filter="all">전체</button>
+							<button class="btn btn-outline-primary filter-btn" data-filter="language">언어</button>
+							<button class="btn btn-outline-primary filter-btn" data-filter="frontend">프론트엔드</button>
+							<button class="btn btn-outline-primary filter-btn" data-filter="backend">백엔드</button>
 						</div>
-						
-						
-						
-						<div class="row">
-							<!-- ======== 언어 스택 (숙련도 내림차순) ======== -->
-							<!-- JAVA 70% - 언어 -->
-							<div class="col-md-6 animate-box">
-								<div class="progress-wrap ftco-animate">
-									<h3>JAVA</h3>
-									<div class="progress">
-										<div class="progress-bar language-color" role="progressbar" aria-valuenow="70"
-											aria-valuemin="0" aria-valuemax="100" style="width:70%">
-											<span>70%</span>
-										</div>
-									</div>
+
+						<!-- 3개 컬럼 flex 컨테이너 -->
+						<div class="skills-sections-container">
+							<!-- 업무에 활용할 수 있음 (70% ~ 80%) -->
+							<div class="skill-level-section" id="advanced-section">
+								<h3 class="skill-level-title mb-3">
+									<span class="badge badge-advanced">업무에 활용할 수 있음</span>
+								</h3>
+								<div class="skills-container" id="advanced-skills">
+									<!-- JavaScript로 동적 생성 -->
 								</div>
 							</div>
-							<!-- Python 70% - 언어 -->
-							<div class="col-md-6 animate-box">
-								<div class="progress-wrap ftco-animate">
-									<h3>Python</h3>
-									<div class="progress">
-										<div class="progress-bar language-color" role="progressbar" aria-valuenow="70"
-											aria-valuemin="0" aria-valuemax="100" style="width:70%">
-											<span>70%</span>
-										</div>
-									</div>
+
+							<!-- 기본 기능 활용 가능 (50% ~ 60%) -->
+							<div class="skill-level-section" id="intermediate-section">
+								<h3 class="skill-level-title mb-3">
+									<span class="badge badge-intermediate">기본 기능을 사용할 수 있음</span>
+								</h3>
+								<div class="skills-container" id="intermediate-skills">
+									<!-- JavaScript로 동적 생성 -->
 								</div>
 							</div>
-							<!-- JavaScript 70% - 언어 -->
-							<div class="col-md-6 animate-box">
-								<div class="progress-wrap ftco-animate">
-									<h3>JavaScript</h3>
-									<div class="progress">
-										<div class="progress-bar language-color" role="progressbar" aria-valuenow="70"
-											aria-valuemin="0" aria-valuemax="100" style="width:70%">
-											<span>70%</span>
-										</div>
-									</div>
+
+							<!-- 보고 이해할 수 있음 (~40%) -->
+							<div class="skill-level-section" id="basic-section">
+								<h3 class="skill-level-title mb-3">
+									<span class="badge badge-basic">보고 이해할 수 있음</span>
+								</h3>
+								<div class="skills-container" id="basic-skills">
+									<!-- JavaScript로 동적 생성 -->
 								</div>
 							</div>
-							
-							<!-- ======== 백엔드 스택 (숙련도 내림차순) ======== -->
-							<!-- Django 70% - 백엔드 -->
-							<div class="col-md-6 animate-box">
-								<div class="progress-wrap ftco-animate">
-									<h3>Django</h3>
-									<div class="progress">
-										<div class="progress-bar backend-color" role="progressbar" aria-valuenow="70"
-											aria-valuemin="0" aria-valuemax="100" style="width:70%">
-											<span>70%</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- Spring Framework 60% - 백엔드 -->
-							<div class="col-md-6 animate-box">
-								<div class="progress-wrap ftco-animate">
-									<h3>Spring Framework</h3>
-									<div class="progress">
-										<div class="progress-bar backend-color" role="progressbar" aria-valuenow="60"
-											aria-valuemin="0" aria-valuemax="100" style="width:60%">
-											<span>60%</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- AWS 50% - 인프라/백엔드 -->
-							<div class="col-md-6 animate-box">
-								<div class="progress-wrap ftco-animate">
-									<h3>AWS</h3>
-									<div class="progress">
-										<div class="progress-bar backend-color" role="progressbar" aria-valuenow="50"
-											aria-valuemin="0" aria-valuemax="100" style="width:50%">
-											<span>50%</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							<!-- ======== 프론트엔드 스택 (숙련도 내림차순) ======== -->
-							<!-- HTML 80% - 프론트엔드 -->
-							<div class="col-md-6 animate-box">
-								<div class="progress-wrap ftco-animate">
-									<h3>HTML</h3>
-									<div class="progress">
-										<div class="progress-bar frontend-color" role="progressbar" aria-valuenow="80"
-											aria-valuemin="0" aria-valuemax="100" style="width:80%">
-											<span>80%</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- CSS 70% - 프론트엔드 -->
-							<div class="col-md-6 animate-box">
-								<div class="progress-wrap ftco-animate">
-									<h3>CSS</h3>
-									<div class="progress">
-										<div class="progress-bar frontend-color" role="progressbar" aria-valuenow="70"
-											aria-valuemin="0" aria-valuemax="100" style="width:70%">
-											<span>70%</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- React 60% - 프론트엔드 -->
-							<div class="col-md-6 animate-box">
-								<div class="progress-wrap ftco-animate">
-									<h3>React</h3>
-									<div class="progress">
-										<div class="progress-bar frontend-color" role="progressbar" aria-valuenow="60"
-											aria-valuemin="0" aria-valuemax="100" style="width:60%">
-											<span>60%</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- Vue.js 60% - 프론트엔드 -->
-							<div class="col-md-6 animate-box">
-								<div class="progress-wrap ftco-animate">
-									<h3>Vue.js</h3>
-									<div class="progress">
-										<div class="progress-bar frontend-color" role="progressbar" aria-valuenow="60"
-											aria-valuemin="0" aria-valuemax="100" style="width:60%">
-											<span>60%</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- jQuery 60% - 프론트엔드 -->
-							<div class="col-md-6 animate-box">
-								<div class="progress-wrap ftco-animate">
-									<h3>jQuery</h3>
-									<div class="progress">
-										<div class="progress-bar frontend-color" role="progressbar" aria-valuenow="60"
-											aria-valuemin="0" aria-valuemax="100" style="width:60%">
-											<span>60%</span>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- <div class="col-md-6 animate-box">
-								<div class="progress-wrap ftco-animate">
-									<h3>SEO</h3>
-									<div class="progress">
-										<div class="progress-bar color-6" role="progressbar" aria-valuenow="80"
-											aria-valuemin="0" aria-valuemax="100" style="width:80%">
-											<span>80%</span>
-										</div>
-									</div>
-								</div>
-							</div> -->
 						</div>
 					</div>
-					<div id="page-4" class="page four">
+					<div id="page-5" class="page five">
 						<h2 id="projects-section" class="heading">Projects</h2>
 						<div class="resume-wrap d-flex ftco-animate">
 							<div class="icon d-flex align-items-center justify-content-center">
@@ -732,47 +788,6 @@
 											<li>프로젝트 사용량 시각화</li>
 											<li>코드 리뷰 및 피드백</li>
 										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="resume-wrap d-flex ftco-animate">
-							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-ideas"></span>
-							</div>
-							<div class="text pl-3">
-								<span class="date">2023.12-2024.01</span>
-								<div class="d-flex">
-									<h2>회원과 트레이너를 위한 PT판매 플랫폼 시스템</h2>
-									<div>
-										<!-- &nbsp;<a class="btn btn-outline-secondary" target="_blank"
-											class="btn btn-outline-secondary"
-											href="https://github.com/congchu/portfolio-template-2">Github</a>
-										&nbsp;<a class="btn btn-outline-secondary" target="_blank"
-											href="/images/project_1_screenshot.png">스크린샷</a> -->
-										&nbsp;<a class="btn btn-outline-secondary" target="_blank"
-										href="./files/PT서비스 플랫폼 ptconnect.pdf">pdf</a>
-									</div>
-								</div>
-								<span class="position">PTConnect</span>
-								<div> <b class="text-dark">기술 스택 : </b>Spring Framework, JavaScript, MySQL, AWS
-								</div>
-								<div> <b class="text-dark">주요 기능 : </b> 회원 관리, 트레이너 및 센터 정보 등록, PT상품 등록, PT상품 리스트 확인, 
-									예약 관리, 결제 </div>
-								<b class="text-primary">담당 업무 </b>
-								<div>
-									<div> 프로젝트 일정 관리</div>
-									<div> AWS를 활용한 웹 서비스 배포</div>
-									<div> 기능 개발
-										<ul>
-											<li>회원 관리</li>
-											<li>센터등록</li>
-											<li>관리자기능 트레이너,센터 가입 승인</li>
-											<li>관리자기능 PT상품 등록 관리</li>
-											<li>관리자기능 PT상품 판매 관리</li>
-											<li>스프링 인터셉터와 시큐리티를 활용한 보안기능</li>
-										</ul>
-
 									</div>
 								</div>
 							</div>
@@ -1377,6 +1392,176 @@
 				subtree: true
 			});
 		}
+	</script>
+
+	<!-- 스킬 필터링 스크립트 -->
+	<script>
+		// 스킬 데이터 배열
+		const skillsData = [
+			// 업무에 활용할 수 있음 (70% ~ 80%)
+			{ name: "JAVA", proficiency: 70, category: "language", icon: "fab fa-java" },
+			{ name: "Python", proficiency: 70, category: "language", icon: "fab fa-python" },
+			{ name: "JavaScript", proficiency: 70, category: "language", icon: "fab fa-js-square" },
+			{ name: "Django", proficiency: 70, category: "backend", icon: "fas fa-server" },
+			{ name: "HTML", proficiency: 80, category: "frontend", icon: "fab fa-html5" },
+			{ name: "CSS", proficiency: 70, category: "frontend", icon: "fab fa-css3-alt" },
+			
+			// 기본 기능 활용 가능 (50% ~ 60%)
+			{ name: "Spring Framework", proficiency: 60, category: "backend", icon: "fas fa-leaf" },
+			{ name: "React", proficiency: 60, category: "frontend", icon: "fab fa-react" },
+			{ name: "Vue.js", proficiency: 60, category: "frontend", icon: "fab fa-vuejs" },
+			{ name: "jQuery", proficiency: 60, category: "frontend", icon: "fas fa-code" },
+			{ name: "MySQL", proficiency: 60, category: "backend", icon: "fas fa-database" },
+			
+			// 보고 이해할 수 있음 (~40%)
+			{ name: "AWS", proficiency: 40, category: "backend", icon: "fab fa-aws" }
+		];
+
+		// 숙련도별 분류 함수
+		function getSkillLevel(proficiency) {
+			if (proficiency >= 70) return 'advanced';
+			if (proficiency >= 50) return 'intermediate';
+			return 'basic';
+		}
+
+		// 스킬 아이템 생성 함수
+		function createSkillItem(skill) {
+			const categoryClass = skill.category + '-skill';
+			
+			return `
+				<div class="skill-item ${categoryClass}" data-category="${skill.category}">
+					<div class="skill-icon">
+						<i class="${skill.icon}"></i>
+					</div>
+					<div class="skill-info">
+						<div class="skill-name">${skill.name}</div>
+						<div class="skill-progress">
+							<div class="progress-bar-container">
+								<div class="progress-bar-fill" style="width: ${skill.proficiency}%"></div>
+							</div>
+							<div class="skill-percentage">${skill.proficiency}%</div>
+						</div>
+					</div>
+				</div>
+			`;
+		}
+
+		// 스킬 렌더링 함수
+		function renderSkills() {
+			const advancedContainer = document.getElementById('advanced-skills');
+			const intermediateContainer = document.getElementById('intermediate-skills');
+			const basicContainer = document.getElementById('basic-skills');
+
+			// 컨테이너 초기화
+			advancedContainer.innerHTML = '';
+			intermediateContainer.innerHTML = '';
+			basicContainer.innerHTML = '';
+
+			// 숙련도별로 스킬 분류
+			const skillsByLevel = {
+				advanced: [],
+				intermediate: [],
+				basic: []
+			};
+
+			skillsData.forEach(skill => {
+				const level = getSkillLevel(skill.proficiency);
+				skillsByLevel[level].push(skill);
+			});
+
+			// 각 레벨별로 스킬들을 직접 컨테이너에 추가
+			Object.keys(skillsByLevel).forEach(level => {
+				const skills = skillsByLevel[level];
+				if (skills.length === 0) return;
+
+				const container = level === 'advanced' ? advancedContainer :
+								level === 'intermediate' ? intermediateContainer : basicContainer;
+
+				// 스킬들을 직접 컨테이너에 추가 (3컬럼 그리드로 자동 배치)
+				skills.forEach(skill => {
+					container.innerHTML += createSkillItem(skill);
+				});
+			});
+
+			// 진행률 바 애니메이션 트리거
+			setTimeout(() => {
+				const progressBars = document.querySelectorAll('.progress-bar-fill');
+				progressBars.forEach(bar => {
+					const width = bar.style.width;
+					bar.style.width = '0%';
+					setTimeout(() => {
+						bar.style.width = width;
+					}, 100);
+				});
+			}, 100);
+		}
+
+		document.addEventListener('DOMContentLoaded', function() {
+			// 스킬 렌더링
+			renderSkills();
+
+			// 필터 버튼들
+			const filterBtns = document.querySelectorAll('.filter-btn');
+			let currentFilter = 'all';
+			
+			// 필터 버튼 클릭 이벤트
+			filterBtns.forEach(btn => {
+				btn.addEventListener('click', function() {
+					// 모든 버튼에서 active 클래스 제거
+					filterBtns.forEach(b => b.classList.remove('active'));
+					
+					// 클릭된 버튼에 active 클래스 추가
+					this.classList.add('active');
+					
+					// 필터 적용
+					currentFilter = this.getAttribute('data-filter');
+					filterSkills(currentFilter);
+				});
+			});
+
+			// 화면 크기 변경 시 필터링 다시 적용
+			window.addEventListener('resize', function() {
+				filterSkills(currentFilter);
+			});
+			
+			function filterSkills(category) {
+				const skillLevelSections = document.querySelectorAll('.skill-level-section');
+				const isMobile = window.innerWidth <= 992;
+				
+				skillLevelSections.forEach(section => {
+					const skillItems = section.querySelectorAll('.skill-item');
+					let hasVisibleItems = false;
+					
+					skillItems.forEach(item => {
+						const itemCategory = item.getAttribute('data-category');
+						
+						if (category === 'all' || itemCategory === category) {
+							item.style.display = 'flex';
+							item.classList.remove('hidden');
+							hasVisibleItems = true;
+						} else {
+							item.style.display = 'none';
+							item.classList.add('hidden');
+						}
+					});
+					
+					// 모바일에서만 빈 섹션을 숨김, 데스크톱에서는 영역 유지
+					if (isMobile) {
+						if (hasVisibleItems) {
+							section.style.display = 'block';
+							section.classList.remove('hidden');
+						} else {
+							section.style.display = 'none';
+							section.classList.add('hidden');
+						}
+					} else {
+						// 데스크톱에서는 항상 섹션을 표시
+						section.style.display = 'block';
+						section.classList.remove('hidden');
+					}
+				});
+			}
+		});
 	</script>
 
 </body>
